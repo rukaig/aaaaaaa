@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123519">
+    <title>Emilia Ambalada Poblete Integrated High School</title>
+    <style>
+        :root {
+            --school-maroon: #650b0a;
+            --school-green: #123519;
+            --school-gold: #e8a51a;
+            color-scheme: light;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--school-green);
+            background: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .utility-bar {
+            min-height: clamp(36px, 4.03vw, 58px);
+            background: #f5f5f5;
+            box-shadow: 0 2px 5px rgb(0 0 0 / 14%);
+        }
+
+        .utility-inner {
+            display: flex;
+            align-items: stretch;
+            width: 87.78%;
+            max-width: 1264px;
+            min-height: clamp(36px, 4.03vw, 58px);
+            margin: 0 auto;
+        }
+
+        .gov-brand,
+        .utility-link,
+        .utility-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--school-maroon);
+            text-decoration: none;
+        }
+
+        .gov-brand {
+            padding: 0 clamp(10px, 1.11vw, 16px);
+            border-right: 1px solid #e3e3e3;
+            font-size: clamp(13px, 1.39vw, 20px);
+        }
+
+        .utility-link {
+            padding: 0 clamp(7px, 1.11vw, 16px);
+            border-right: 1px solid #e3e3e3;
+            font-size: clamp(9px, 0.97vw, 14px);
+            white-space: nowrap;
+        }
+
+        .utility-link:hover,
+        .utility-link:focus-visible {
+            color: var(--school-green);
+            background: rgb(18 53 25 / 8%);
+        }
+
+        .utility-search {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            padding: 0 clamp(6px, 0.97vw, 14px);
+        }
+
+        .utility-search input {
+            width: clamp(100px, 10.7vw, 154px);
+            height: clamp(24px, 2.57vw, 37px);
+            padding: 0 clamp(6px, 0.7vw, 10px);
+            border: 1px solid #ccc;
+            background: #fff;
+            color: var(--school-green);
+        }
+
+        .utility-action {
+            min-width: clamp(37px, 4.03vw, 58px);
+            border: 0;
+            border-left: 1px solid #e3e3e3;
+            background: transparent;
+            cursor: pointer;
+            font-size: clamp(14px, 1.39vw, 20px);
+            font-weight: 700;
+            transition: background-color 180ms ease, color 180ms ease;
+        }
+
+        .utility-action:hover {
+            color: var(--school-green);
+            background: rgb(18 53 25 / 8%);
+        }
+
+        .masthead {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: clamp(108px, 11.8vw, 170px);
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 98%) 46%, rgb(255 255 255 / 68%) 100%),
+                linear-gradient(135deg, #e7e8e8, #d1d4d6);
+        }
+
+        .masthead::after {
+            position: absolute;
+            right: 0;
+            bottom: -70px;
+            width: 50%;
+            height: 195px;
+            border: 1px solid rgb(18 53 25 / 9%);
+            border-radius: 50%;
+            box-shadow:
+                0 -12px 0 -11px rgb(18 53 25 / 10%),
+                0 -24px 0 -23px rgb(18 53 25 / 9%),
+                0 -36px 0 -35px rgb(18 53 25 / 8%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .masthead-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            width: 87.78%;
+            max-width: 1264px;
+            margin: 0 auto;
+            padding: clamp(12px, 1.25vw, 18px) 0;
+        }
+
+        .school-crest {
+            display: block;
+            flex: 0 0 auto;
+            width: clamp(78px, 8.61vw, 124px);
+            height: clamp(78px, 8.61vw, 124px);
+            object-fit: contain;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .school-brand {
+            margin-left: clamp(11px, 1.25vw, 18px);
+            color: var(--school-maroon);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .school-name {
+            margin: 0;
+            font-size: clamp(19px, 2.08vw, 30px);
+            font-variant: small-caps;
+            font-weight: 500;
+            line-height: 1.08;
+        }
+
+        .school-subtitle {
+            margin: 3px 0 0;
+            color: var(--school-green);
+            font-size: clamp(12px, 1.32vw, 19px);
+            font-weight: 600;
+        }
+
+        .school-est {
+            margin: 3px 0 0;
+            color: var(--school-green);
+            font-size: clamp(10px, 1.11vw, 16px);
+            font-style: italic;
+        }
+
+        .local-time {
+            align-self: flex-start;
+            margin: 2px 0 0 auto;
+            color: var(--school-green);
+            font-size: clamp(8px, 0.9vw, 13px);
+            line-height: 1.25;
+            text-align: right;
+        }
+
+        .main-navigation {
+            position: relative;
+            z-index: 5;
+            background: var(--school-green);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .navigation-inner {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            width: 85.42vw;
+            max-width: 1230px;
+            min-height: clamp(37px, 4.1vw, 59px);
+        }
+
+        .navigation-button {
+            position: relative;
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: clamp(37px, 4.1vw, 59px);
+            padding: 0 clamp(3px, 0.7vw, 10px);
+            border: 0;
+            border-right: 1px solid rgb(255 255 255 / 34%);
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: clamp(8px, 0.97vw, 14px);
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: background-color 200ms ease, color 200ms ease;
+        }
+
+        .navigation-button:first-child {
+            min-width: 0;
+        }
+
+        .navigation-button:nth-of-type(1) { width: 11.14%; }
+        .navigation-button:nth-of-type(2) { width: 7.97%; }
+        .navigation-button:nth-of-type(3) { width: 10.65%; }
+        .navigation-button:nth-of-type(4) { width: 9.51%; }
+        .navigation-button:nth-of-type(5) { width: 15.85%; }
+        .navigation-button:nth-of-type(6) { width: 10.16%; }
+        .navigation-button:nth-of-type(7) { width: 9.67%; }
+        .navigation-button:nth-of-type(8) { width: 8.70%; }
+        .navigation-button:nth-of-type(9) { width: 9.67%; }
+        .navigation-button:nth-of-type(10) { width: 6.67%; }
+
+        .navigation-button:hover {
+            background: rgb(255 255 255 / 13%);
+        }
+
+        .navigation-button[aria-pressed="true"] {
+            background: rgb(0 0 0 / 18%);
+            box-shadow: inset 0 -4px var(--school-gold);
+        }
+
+        .navigation-button[aria-expanded="true"] {
+            background: rgb(0 0 0 / 18%);
+            box-shadow: inset 0 -4px var(--school-gold);
+        }
+
+        .about-menu {
+            position: absolute;
+            top: 100%;
+            z-index: 12;
+            width: min(420px, calc(100vw - 24px));
+            max-height: min(620px, calc(100vh - 150px));
+            overflow-y: auto;
+            padding: 9px;
+            border-bottom: 4px solid var(--school-gold);
+            background: #0c2912;
+            box-shadow: 0 18px 34px rgb(0 0 0 / 30%);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) scale(0.98);
+            transition: opacity 200ms ease, transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 200ms ease;
+        }
+
+        .about-menu.is-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .about-menu a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 11px 15px;
+            border-bottom: 1px solid rgb(255 255 255 / 12%);
+            color: #fff;
+            font-size: clamp(11px, 0.97vw, 14px);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background-color 160ms ease, color 160ms ease, padding-left 160ms ease;
+        }
+
+        .about-menu a:last-child {
+            border-bottom: 0;
+        }
+
+        .about-menu a:hover,
+        .about-menu a:focus-visible {
+            padding-left: 20px;
+            background: rgb(255 255 255 / 10%);
+            color: #ffd56a;
+            outline: none;
+        }
+
+        .navigation-button:focus-visible,
+        .utility-action:focus-visible {
+            z-index: 1;
+            outline: 3px solid var(--school-gold);
+            outline-offset: -4px;
+        }
+
+        .chevron {
+            width: 0;
+            height: 0;
+            border-top: 5px solid currentColor;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            min-height: clamp(262px, 28.82vw, 415px);
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 18% 108%, rgb(37 71 27 / 86%) 0 17%, transparent 39%),
+                radial-gradient(ellipse at 83% 102%, rgb(22 38 117 / 78%) 0 21%, transparent 57%),
+                linear-gradient(110deg, #252921, #303237 44%, #10195e);
+            color: #fff;
+        }
+
+        .hero::before {
+            position: absolute;
+            inset: 0 0 0 20%;
+            background:
+                linear-gradient(90deg, rgb(0 0 0 / 42%), transparent 24%),
+                linear-gradient(0deg, rgb(0 0 0 / 42%), transparent 68%),
+                repeating-linear-gradient(0deg, transparent 0 53px, rgb(245 245 240 / 15%) 54px 57px),
+                repeating-linear-gradient(90deg, rgb(219 222 226 / 17%) 0 4px, transparent 5px 69px),
+                linear-gradient(180deg, #82817a, #343a48);
+            clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
+            opacity: 0.72;
+            content: "";
+        }
+
+        .hero::after {
+            position: absolute;
+            right: 0;
+            bottom: -142px;
+            width: 61%;
+            height: 250px;
+            border: 1px solid rgb(50 72 255 / 85%);
+            border-radius: 50%;
+            box-shadow:
+                0 -12px 0 -11px rgb(50 72 255 / 80%),
+                0 -24px 0 -23px rgb(50 72 255 / 75%),
+                0 -36px 0 -35px rgb(50 72 255 / 70%),
+                0 -48px 0 -47px rgb(50 72 255 / 64%),
+                0 -60px 0 -59px rgb(50 72 255 / 58%),
+                0 -72px 0 -71px rgb(50 72 255 / 52%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            width: 87.78%;
+            max-width: 1264px;
+            margin: 0 auto;
+            padding: 0 0 clamp(42px, 4.65vw, 67px);
+        }
+
+        .hero-title {
+            margin: 0;
+            font-size: clamp(27px, 2.92vw, 42px);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero-rule {
+            width: 273px;
+            max-width: 60vw;
+            height: 2px;
+            margin-top: clamp(26px, 2.92vw, 42px);
+            background: var(--school-gold);
+        }
+
+        .content {
+            width: 87.78%;
+            max-width: 1264px;
+            margin: 0 auto;
+            padding: clamp(14px, 1.53vw, 22px) 0 clamp(38px, 4.17vw, 60px);
+        }
+
+        .section-title {
+            margin: 0;
+            padding-bottom: clamp(9px, 1.04vw, 15px);
+            border-bottom: 5px solid var(--school-green);
+            color: var(--school-maroon);
+            font-size: clamp(19px, 2.08vw, 30px);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .history-intro {
+            margin: clamp(16px, 1.74vw, 25px) auto 0;
+            max-width: 700px;
+            color: var(--school-green);
+            font-size: clamp(13px, 1.39vw, 20px);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .history-intro strong {
+            display: block;
+            color: var(--school-maroon);
+            font-size: clamp(14px, 1.46vw, 21px);
+        }
+
+        .content-section {
+            scroll-margin-top: 24px;
+        }
+
+        .content-section:nth-of-type(even) {
+            background: #f3f5f1;
+        }
+
+        .section-kicker {
+            margin: 0 0 8px;
+            color: var(--school-green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading .section-title {
+            padding-bottom: 12px;
+        }
+
+        .section-copy {
+            max-width: 760px;
+            color: #34443a;
+            font-size: clamp(14px, 1.25vw, 18px);
+            line-height: 1.75;
+        }
+
+        .regent-card {
+            display: grid;
+            grid-template-columns: minmax(210px, 300px) minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 68px);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 48px);
+            border: 1px solid #dce3d8;
+            border-radius: 4px;
+            background: #fff;
+            box-shadow: 0 12px 32px rgb(18 53 25 / 8%);
+        }
+
+        .regent-portrait {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border: 4px solid var(--school-maroon);
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 20%, #fff 0, #edf1e9 72%);
+        }
+
+        .regent-portrait img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 14%;
+        }
+
+        .regent-index {
+            margin: 0 0 12px;
+            color: var(--school-gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .regent-name {
+            margin: 0;
+            color: var(--school-maroon);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(25px, 3vw, 36px);
+            font-weight: 500;
+            line-height: 1.15;
+        }
+
+        .regent-role {
+            margin: 10px 0 16px;
+            color: var(--school-green);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .regent-note {
+            margin: 0;
+            color: #556258;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .commitment-grid,
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .commitment-card,
+        .directory-item {
+            padding: 20px;
+            border-left: 3px solid var(--school-gold);
+            background: #fff;
+        }
+
+        .commitment-card h3,
+        .directory-item h3 {
+            margin: 0 0 8px;
+            color: var(--school-maroon);
+            font-size: 17px;
+        }
+
+        .commitment-card p,
+        .directory-item p {
+            margin: 0;
+            color: #46564b;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .organization-chart {
+            display: grid;
+            justify-items: center;
+            gap: 14px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .organization-node {
+            width: min(100%, 360px);
+            padding: 16px 20px;
+            border: 1px solid #dce3d8;
+            border-top: 3px solid var(--school-green);
+            background: #fff;
+            color: var(--school-green);
+            text-align: center;
+        }
+
+        .organization-node strong,
+        .organization-node span {
+            display: block;
+        }
+
+        .organization-node span {
+            margin-top: 4px;
+            color: #58645b;
+            font-size: 13px;
+        }
+
+        .organization-branches {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            width: 100%;
+        }
+
+        .milestone-list {
+            max-width: 760px;
+            margin: 0;
+            padding: 0 0 0 20px;
+            border-left: 2px solid var(--school-gold);
+            list-style: none;
+        }
+
+        .milestone-list li {
+            position: relative;
+            padding: 0 0 22px 18px;
+            color: #46564b;
+            line-height: 1.6;
+        }
+
+        .milestone-list li::before {
+            position: absolute;
+            top: 5px;
+            left: -26px;
+            width: 12px;
+            height: 12px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            background: var(--school-maroon);
+            box-shadow: 0 0 0 1px var(--school-maroon);
+            content: "";
+        }
+
+        .milestone-list strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--school-maroon);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 560px) {
+            .utility-inner {
+                width: 100%;
+                justify-content: flex-end;
+                padding: 0;
+            }
+
+            .utility-link,
+            .utility-search {
+                display: none;
+            }
+
+            .gov-brand {
+                margin-right: auto;
+                font-size: 16px;
+            }
+
+            .utility-link {
+                padding: 0 7px;
+                font-size: 10px;
+            }
+
+            .utility-action {
+                min-width: 38px;
+                font-size: 16px;
+            }
+
+            .masthead {
+                min-height: 105px;
+            }
+
+            .masthead-inner {
+                padding: 12px;
+            }
+
+            .school-crest {
+                width: 78px;
+                height: 78px;
+            }
+
+            .school-brand {
+                margin-left: 10px;
+            }
+
+            .school-name {
+                font-size: 17px;
+            }
+
+            .school-subtitle {
+                font-size: 12px;
+            }
+
+            .school-est {
+                font-size: 12px;
+            }
+
+            .local-time {
+                display: none;
+            }
+
+            .navigation-button {
+                flex: 1 0 30%;
+                width: auto;
+                padding: 0 8px;
+                font-size: 12px;
+            }
+
+            .navigation-inner {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .about-menu {
+                width: min(360px, calc(100vw - 24px));
+                max-height: calc(100vh - 190px);
+            }
+
+            .hero {
+                min-height: 240px;
+            }
+
+            .hero-inner {
+                padding: 0 22px 48px;
+            }
+
+            .hero-rule {
+                margin-top: 27px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .regent-card {
+                grid-template-columns: minmax(0, 1fr);
+                justify-items: center;
+                max-width: 520px;
+                text-align: center;
+            }
+
+            .regent-portrait {
+                width: min(72vw, 260px);
+            }
+
+            .commitment-grid,
+            .directory-grid,
+            .organization-branches {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="utility-bar">
+            <div class="utility-inner">
+                <a class="gov-brand" href="#" aria-label="Government of the Philippines">GOVPH</a>
+                <a class="utility-link" href="#history">Good Governance Conditions</a>
+                <a class="utility-link" href="#history">Transparency Seal</a>
+                <a class="utility-link" href="#history">Bidding Opportunities</a>
+                <form class="utility-search" role="search" onsubmit="return false">
+                    <label class="sr-only" for="site-search">Search this site</label>
+                    <input id="site-search" type="search" placeholder="Search...">
+                </form>
+                <button class="utility-action" type="button" aria-label="Accessibility options">◉</button>
+                <button class="utility-action" type="button" aria-label="Increase text size">A</button>
+            </div>
+        </div>
+
+        <div class="masthead">
+            <div class="masthead-inner">
+                <img class="school-crest" src="aldous.jpg" alt="Emilia Ambalada Poblete Integrated High School crest">
+                <div class="school-brand">
+                    <p class="school-name">Emilia Ambalada Poblete Integrated High School</p>
+                    <p class="school-subtitle">Mary Ann Village, Brgy. V, Silang, Cavite</p>
+                    <p class="school-est">Established 2009</p>
+                </div>
+                <p class="local-time">Philippine Standard Time:<br><span id="philippine-time"></span></p>
+            </div>
+        </div>
+
+        <nav class="main-navigation" aria-label="Main navigation">
+            <div class="navigation-inner">
+                <button class="navigation-button" type="button" aria-label="Home" aria-pressed="false">⌂</button>
+                <button class="navigation-button" id="about-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About <span class="chevron" aria-hidden="true"></span></button>
+                <div class="about-menu" id="about-menu" aria-label="About EAPIHS" aria-hidden="true">
+                    <a href="history.html">EAPIHS History</a>
+                    <a href="vision-mission.html">Vision, Mission, Quality Policy, Strategic Areas</a>
+                    <a href="organizational-chart.html">Organizational Chart</a>
+                    <a href="campus.html">Campus</a>
+                    <a href="principal-message.html">Principal's Message</a>
+                    <a href="milestones.html">Institutional Milestones</a>
+                    <a href="board-of-regents.html">Board of Regents</a>
+                    <a href="school-officials.html">School Officials</a>
+                    <a href="directory.html">EAPIHS Directory</a>
+                </div>
+                <button class="navigation-button" type="button" aria-pressed="false">Academics <span class="chevron" aria-hidden="true"></span></button>
+                <button class="navigation-button" type="button" aria-pressed="false">Admissions</button>
+                <button class="navigation-button" type="button" aria-pressed="false">Registrar</button>
+                <button class="navigation-button" type="button" aria-pressed="false">Students <span class="chevron" aria-hidden="true"></span></button>
+                <button class="navigation-button" type="button" aria-pressed="false">Services <span class="chevron" aria-hidden="true"></span></button>
+                <button class="navigation-button" type="button" aria-pressed="false">Research</button>
+                <button class="navigation-button" type="button" aria-pressed="false">Linkages <span class="chevron" aria-hidden="true"></span></button>
+                <button class="navigation-button" type="button" aria-pressed="false">Alumni</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-inner">
+                <h1 class="hero-title" id="hero-title">Welcome to EAPIHS</h1>
+                <div class="hero-rule" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section class="content" aria-labelledby="home-title">
+            <h2 class="section-title" id="home-title">Our School</h2>
+            <p class="history-intro">A public school community serving learners in Silang, Cavite.<strong>EMILIA AMBALADA POBLETE INTEGRATED HIGH SCHOOL</strong></p>
+            <p class="history-intro">Explore the About menu to learn about the school's history, leadership, vision, mission, and community.</p>
+        </section>
+        <p class="sr-only" id="navigation-status" aria-live="polite"></p>
+    </main>
+
+    <script>
+        const navigationButtons = document.querySelectorAll(".navigation-button:not(#about-trigger)");
+        const aboutTrigger = document.querySelector("#about-trigger");
+        const aboutMenu = document.querySelector("#about-menu");
+        const mainNavigation = document.querySelector(".main-navigation");
+        const navigationInner = document.querySelector(".navigation-inner");
+        const navigationStatus = document.querySelector("#navigation-status");
+        const philippineTime = document.querySelector("#philippine-time");
+        let menuCloseTimer;
+
+        function positionAboutMenu() {
+            const maxLeft = Math.max(0, navigationInner.clientWidth - aboutMenu.offsetWidth);
+            aboutMenu.style.left = `${Math.min(aboutTrigger.offsetLeft, maxLeft)}px`;
+        }
+
+        function setAboutMenuOpen(isOpen) {
+            window.clearTimeout(menuCloseTimer);
+            aboutMenu.classList.toggle("is-open", isOpen);
+            aboutMenu.setAttribute("aria-hidden", String(!isOpen));
+            aboutTrigger.setAttribute("aria-expanded", String(isOpen));
+            if (isOpen) {
+                positionAboutMenu();
+            }
+        }
+
+        function scheduleAboutMenuClose() {
+            window.clearTimeout(menuCloseTimer);
+            menuCloseTimer = window.setTimeout(() => {
+                if (!mainNavigation.contains(document.activeElement)) {
+                    setAboutMenuOpen(false);
+                }
+            }, 140);
+        }
+
+        function updatePhilippineTime() {
+            philippineTime.textContent = new Intl.DateTimeFormat("en-PH", {
+                timeZone: "Asia/Manila",
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true
+            }).format(new Date());
+        }
+
+        navigationButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                navigationButtons.forEach((item) => {
+                    item.setAttribute("aria-pressed", String(item === button));
+                });
+                navigationStatus.textContent = `${button.textContent.trim()} selected`;
+                setAboutMenuOpen(false);
+            });
+        });
+
+        aboutTrigger.addEventListener("click", () => {
+            setAboutMenuOpen(aboutTrigger.getAttribute("aria-expanded") !== "true");
+        });
+        aboutTrigger.addEventListener("mouseenter", () => {
+            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                setAboutMenuOpen(true);
+            }
+        });
+        navigationInner.addEventListener("pointerleave", scheduleAboutMenuClose);
+        aboutMenu.addEventListener("pointerenter", () => window.clearTimeout(menuCloseTimer));
+        aboutMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                setAboutMenuOpen(false);
+                navigationStatus.textContent = `${link.textContent.trim()} section opened`;
+            });
+        });
+        mainNavigation.addEventListener("focusout", (event) => {
+            if (!mainNavigation.contains(event.relatedTarget)) {
+                setAboutMenuOpen(false);
+            }
+        });
+        document.addEventListener("pointerdown", (event) => {
+            if (!mainNavigation.contains(event.target)) {
+                setAboutMenuOpen(false);
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && aboutTrigger.getAttribute("aria-expanded") === "true") {
+                setAboutMenuOpen(false);
+                aboutTrigger.focus();
+            }
+        });
+        window.addEventListener("resize", () => {
+            if (aboutTrigger.getAttribute("aria-expanded") === "true") {
+                positionAboutMenu();
+            }
+        });
+
+        updatePhilippineTime();
+        window.setInterval(updatePhilippineTime, 1000);
+    </script>
+</body>
+</html>
